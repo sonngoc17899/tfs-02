@@ -21,27 +21,29 @@ type Input struct {
 }
 
 type Sum struct {
-	Sum string `json:"sum"`
+	Sum float64 `json:"value"`
 }
 
 type Sub struct {
-	Sub int `json:"sub"`
+	Sub float64 `json:"value"`
 }
 
 type Mul struct {
-	Mul int `json:"mul"`
+	Mul float64 `json:"value"`
 }
 
 type Div struct {
-	Div int `json:"div"`
+	Div float64 `json:"value"`
 }
 
 func apiSum(w http.ResponseWriter, req *http.Request) {
 	params := req.URL.Query()
 	a := params["a"]
 	b := params["b"]
+	s, err := strconv.ParseFloat(string(a[0]), 32)
+	s1, err := strconv.ParseFloat(string(b[0]), 32)
 	i := Sum{
-		Sum: a[0] + b[0],
+		Sum: s + s1,
 	}
 	bb, err := json.Marshal(&i)
 	if err != nil {
@@ -56,10 +58,12 @@ func apiSub(w http.ResponseWriter, req *http.Request) {
 	params := req.URL.Query()
 	a := params["a"]
 	b := params["b"]
-	intA, err := strconv.Atoi(a[0])
-	intB, err := strconv.Atoi(b[0])
+	// intA, err := strconv.Atoi(a[0])
+	// intB, err := strconv.Atoi(b[0])
+	s, err := strconv.ParseFloat(string(a[0]), 32)
+	s1, err := strconv.ParseFloat(string(b[0]), 32)
 	i := Sub{
-		Sub: intA - intB,
+		Sub: s - s1,
 	}
 	bb, err := json.Marshal(&i)
 	if err != nil {
@@ -74,10 +78,10 @@ func apiMul(w http.ResponseWriter, req *http.Request) {
 	params := req.URL.Query()
 	a := params["a"]
 	b := params["b"]
-	intA, err := strconv.Atoi(a[0])
-	intB, err := strconv.Atoi(b[0])
+	s, err := strconv.ParseFloat(string(a[0]), 32)
+	s1, err := strconv.ParseFloat(string(b[0]), 32)
 	i := Mul{
-		Mul: intA * intB,
+		Mul: s * s1,
 	}
 	bb, err := json.Marshal(&i)
 	if err != nil {
@@ -92,10 +96,10 @@ func apiDiv(w http.ResponseWriter, req *http.Request) {
 	params := req.URL.Query()
 	a := params["a"]
 	b := params["b"]
-	intA, err := strconv.Atoi(a[0])
-	intB, err := strconv.Atoi(b[0])
+	s, err := strconv.ParseFloat(string(a[0]), 32)
+	s1, err := strconv.ParseFloat(string(b[0]), 32)
 	i := Div{
-		Div: intA / intB,
+		Div: s / s1,
 	}
 	bb, err := json.Marshal(&i)
 	if err != nil {

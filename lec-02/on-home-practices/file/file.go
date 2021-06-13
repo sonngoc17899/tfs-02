@@ -15,13 +15,13 @@ func main() {
 	fmt.Println(min_max_avg(numbers))
 	fmt.Print("sort: ")
 	fmt.Println(bubbleSort(numbers, true))
-	fmt.Print("prime of numbers: ")
+	fmt.Print("prime in numbers: ")
 	fmt.Println(findPrime(numbers))
 
 	fmt.Print("search value in file: ")
 	fmt.Println(searchValue(numbers, 7))
 
-	writeFile("newFile.txt", "Hello World")
+	writeFile("newFile.txt", "Hello World 123")
 }
 
 func ReadFile() []int {
