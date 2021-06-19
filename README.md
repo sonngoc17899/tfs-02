@@ -4,7 +4,7 @@ Fullname        | Class   |
 ---             | ---     |
 Nguyen Ngoc Son | TFS - 02|
 
-#Directory's tree
+# Directory's tree
 
 ```bash
 ├───lec-02
